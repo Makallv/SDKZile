@@ -15,7 +15,7 @@ export default function Footer({ onOpenAdmin }) {
           {/* Col 1: Brand */}
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white/5 border border-brand-gold/40 p-2 flex items-center justify-center shadow-xl shadow-brand-gold/15 shrink-0">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-2xl bg-white/5 border border-brand-gold/40 p-1 flex items-center justify-center shadow-xl shadow-brand-gold/15 shrink-0">
                 <img
                   src="/images/logo/logo-zile.png"
                   alt="SDK Zīle Logo"

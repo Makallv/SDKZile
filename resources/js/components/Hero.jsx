@@ -55,15 +55,15 @@ export default function Hero({ onOpenCompetitions }) {
   return (
     <section 
       id="sakums" 
-      className="relative min-h-[94vh] flex flex-col justify-between pt-24 pb-8 overflow-hidden"
+      className="relative min-h-[94vh] flex flex-col justify-between pt-28 sm:pt-32 lg:pt-36 pb-8 overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
       {/* Background Pictures Carousel: Dedicated right-hand section on desktop so the left stack never covers anyone */}
       <div className="hero-bg-base absolute inset-0 z-0 overflow-hidden bg-[#070D18]">
         
-        {/* Pictures Container: Shifted decisively to the right 75% on desktop */}
-        <div className="absolute inset-0 lg:left-[24%] lg:w-[76%] xl:left-[28%] xl:w-[72%] 2xl:left-[32%] 2xl:w-[68%]">
+        {/* Pictures Container: Shifted to the right on desktop, with feathered perimeter blending */}
+        <div className="hero-photos-container absolute inset-0 lg:left-[16%] lg:w-[84%] xl:left-[18%] xl:w-[82%] 2xl:left-[22%] 2xl:w-[78%]">
           {DIENAS_FOTO_SLIDES.map((slide, index) => {
             const isActive = index === currentSlide;
             return (
@@ -81,7 +81,7 @@ export default function Hero({ onOpenCompetitions }) {
                     loading={index === 0 ? "eager" : "lazy"}
                     fetchPriority={index === 0 ? "high" : "auto"}
                     decoding="async"
-                    className={`w-full h-full object-cover transition-transform duration-700 ease-out ${slide.position || 'object-center'}`}
+                    className={`w-full h-full object-cover transition-transform duration-700 ease-out hero-sharp-img ${slide.position || 'object-center'}`}
                   />
                 </picture>
               </div>
@@ -89,12 +89,17 @@ export default function Hero({ onOpenCompetitions }) {
           })}
         </div>
 
-        {/* Soft edge gradient on left to seamlessly blend into the dark text backdrop */}
-        <div className="hero-left-vignette absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-[#070D18] via-[#070D18] via-[22%] lg:via-[27%] xl:via-[31%] to-transparent hidden lg:block" />
+        {/* Soft edge gradient on left to seamlessly blend into the text backdrop */}
+        <div className="hero-left-vignette absolute inset-0 z-10 pointer-events-none" />
+
+        {/* Top vignette: blends smoothly into the navbar and page top */}
+        <div className="hero-top-vignette absolute inset-0 z-10 pointer-events-none" />
+
+        {/* Right edge vignette: feathers ultra-wide borders */}
+        <div className="hero-right-vignette absolute inset-0 z-10 pointer-events-none" />
 
         {/* Bottom vignette: keeps the bottom stats area clear and readable while transitioning into next section */}
-        <div className="hero-dark-overlay absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-[#070D18] via-transparent via-25% to-black/35" />
-        <div className="hero-light-overlay absolute inset-0 z-10 pointer-events-none hidden" />
+        <div className="hero-bottom-vignette absolute inset-0 z-10 pointer-events-none" />
       </div>
 
       {/* TOP & MIDDLE: Compact welcoming text strictly on the left, keeping all photo subjects 100% uncovered */}

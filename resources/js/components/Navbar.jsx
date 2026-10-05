@@ -50,8 +50,8 @@ export default function Navbar({ onOpenAdmin, onOpenCompetitions, currentView, s
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#070D18]/95 backdrop-blur-md border-b border-brand-border/60 py-2 sm:py-2.5 shadow-2xl'
-          : 'bg-gradient-to-b from-[#070D18]/95 via-[#070D18]/60 to-transparent py-3 sm:py-4'
+          ? 'bg-[#070D18]/95 backdrop-blur-md border-b border-brand-border/60 py-1.5 sm:py-2 shadow-2xl navbar-scrolled'
+          : 'bg-gradient-to-b from-[#070D18]/95 via-[#070D18]/60 to-transparent py-2 sm:py-2.5 navbar-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -65,9 +65,9 @@ export default function Navbar({ onOpenAdmin, onOpenCompetitions, currentView, s
               setCurrentView('home');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="flex items-center gap-3 group"
+            className="flex items-center gap-3 sm:gap-4 group"
           >
-            <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-[68px] md:h-[68px] rounded-2xl bg-white/5 border border-brand-gold/40 p-1.5 flex items-center justify-center shadow-xl shadow-brand-gold/20 group-hover:scale-105 transition-transform duration-300 shrink-0">
+            <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-2xl bg-white/5 border border-brand-gold/40 p-1 flex items-center justify-center shadow-xl shadow-brand-gold/20 group-hover:scale-105 transition-transform duration-300 shrink-0">
               <img
                 src="/images/logo/logo-zile.png"
                 alt="SDK Zīle Logo"
@@ -85,12 +85,12 @@ export default function Navbar({ onOpenAdmin, onOpenCompetitions, currentView, s
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 bg-transparent">
             {navLinks.map((link) => (
               <button
                 key={link.label}
                 onClick={() => handleNavClick(link)}
-                className="px-3 py-2 text-sm font-medium text-slate-300 hover:text-brand-gold hover:bg-white/5 rounded-lg transition-all"
+                className="px-3.5 py-2 text-sm font-medium text-slate-300 hover:text-brand-gold bg-transparent hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer"
               >
                 {link.label}
               </button>
