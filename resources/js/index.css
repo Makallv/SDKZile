@@ -1,0 +1,559 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#070D18] text-slate-100 font-sans antialiased overflow-x-hidden;
+  }
+  
+  h1, h2, h3, .font-serif {
+    font-family: 'Cinzel', 'Playfair Display', serif;
+  }
+
+  html.theme-light body,
+  body.theme-light {
+    background-color: #f8fafc !important;
+    color: #0f172a !important;
+  }
+}
+
+/* ===== SDK Zīle Signature Club Electric Green (matches #00FF00 in logo-zile.png) ===== */
+.text-zile-green,
+.text-zile-gradient,
+.hero-text-card h1 .text-zile-green,
+.hero-text-card h1 .text-zile-gradient {
+  color: #00FF00 !important;
+  -webkit-text-fill-color: #00FF00 !important;
+  background: none !important;
+  display: inline-block;
+}
+
+/* ===== Comprehensive Light Theme Overrides ===== */
+html.theme-light,
+.theme-light {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+.theme-light .text-zile-green,
+.theme-light .text-zile-gradient,
+.theme-light #sakums .hero-text-card h1 .text-zile-green,
+.theme-light #sakums .hero-text-card h1 .text-zile-gradient {
+  color: #00FF00 !important;
+  -webkit-text-fill-color: #00FF00 !important;
+  background: none !important;
+  display: inline-block;
+}
+
+/* Backgrounds: convert dark section & page backgrounds to clean light surfaces */
+.theme-light body,
+.theme-light .bg-brand-dark,
+.theme-light .bg-\[\#070D18\],
+.theme-light .bg-\[\#090F1E\] {
+  background-color: #f8fafc !important;
+}
+
+.theme-light .bg-brand-navy,
+.theme-light .bg-\[\#0F172A\],
+.theme-light .bg-\[\#0B1120\],
+.theme-light .bg-\[\#0B1424\],
+.theme-light .bg-\[\#080E1C\],
+.theme-light .bg-\[\#050912\] {
+  background-color: #ffffff !important;
+}
+
+/* Cards & Modals: clean elevated white surfaces with subtle shadows */
+.theme-light .bg-brand-card,
+.theme-light .bg-\[\#131D31\],
+.theme-light .bg-\[\#131D31\]\/90,
+.theme-light .bg-slate-900,
+.theme-light .bg-slate-900\/90,
+.theme-light .bg-slate-900\/80,
+.theme-light .bg-slate-900\/70,
+.theme-light .bg-slate-900\/50 {
+  background-color: #ffffff !important;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+}
+
+.theme-light .bg-slate-800,
+.theme-light .bg-slate-800\/80,
+.theme-light .bg-slate-800\/60,
+.theme-light .bg-slate-800\/40 {
+  background-color: #f1f5f9 !important;
+}
+
+.theme-light .bg-slate-900\/40,
+.theme-light .bg-slate-800\/20 {
+  background-color: #f8fafc !important;
+}
+
+/* Programs Section Highlighted Card */
+.theme-light .from-\[\#162238\] {
+  --tw-gradient-from: #fffbeb var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: #ffffff var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+
+/* Borders */
+.theme-light .border-slate-800,
+.theme-light .border-slate-800\/80,
+.theme-light .border-slate-800\/60,
+.theme-light .border-slate-800\/40,
+.theme-light .border-slate-700,
+.theme-light .border-slate-700\/80,
+.theme-light .border-brand-border,
+.theme-light .divide-slate-800 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #e2e8f0 !important;
+}
+
+/* Headings and primary text */
+.theme-light h1,
+.theme-light h2,
+.theme-light h3,
+.theme-light h4,
+.theme-light .text-white {
+  color: #0f172a;
+}
+
+.theme-light .text-slate-100,
+.theme-light .text-slate-200 {
+  color: #1e293b;
+}
+
+/* Secondary & descriptive text */
+.theme-light .text-slate-300,
+.theme-light .text-slate-400 {
+  color: #475569;
+}
+
+.theme-light .text-slate-500 {
+  color: #64748b;
+}
+
+/* Retain light text on dark badges, buttons, overlays, and modals in light mode */
+.theme-light [class*="bg-black"] .text-white,
+.theme-light [class*="bg-black"] .text-slate-100,
+.theme-light [class*="bg-black"] .text-slate-200,
+.theme-light [class*="bg-black"] .text-slate-300,
+.theme-light [class*="bg-black"] .text-slate-400,
+.theme-light [class*="bg-black"] span,
+.theme-light [class*="bg-black"] h3,
+.theme-light [class*="bg-black"] h4,
+.theme-light [class*="bg-black\/"] .text-white,
+.theme-light [class*="bg-black\/"] .text-slate-100,
+.theme-light [class*="bg-black\/"] .text-slate-200,
+.theme-light [class*="bg-black\/"] .text-slate-300,
+.theme-light [class*="bg-black\/"] .text-slate-400,
+.theme-light [class*="bg-black\/"] span,
+.theme-light [class*="bg-black\/"] h3,
+.theme-light [class*="bg-black\/"] h4,
+.theme-light [class*="from-black"] h4,
+.theme-light [class*="from-black"] .text-white,
+.theme-light [class*="from-black"] .text-slate-300,
+.theme-light [class*="from-black"] span {
+  color: #ffffff !important;
+}
+
+.theme-light [class*="bg-black"] .text-brand-gold,
+.theme-light [class*="bg-black\/"] .text-brand-gold,
+.theme-light [class*="from-black"] .text-brand-gold {
+  color: #fbbf24 !important;
+}
+
+/* Lightbox Modal in light theme: ensure all modal content is properly legible */
+.theme-light .fixed.inset-0.bg-black\/95,
+.theme-light .fixed.inset-0.z-50.bg-black\/95,
+.theme-light [class*="bg-black/95"] {
+  background-color: rgba(0, 0, 0, 0.96) !important;
+  color: #ffffff !important;
+}
+.theme-light .fixed.inset-0.bg-black\/95 h3,
+.theme-light .fixed.inset-0.z-50.bg-black\/95 h3,
+.theme-light .fixed.inset-0.bg-black\/95 .text-white,
+.theme-light .fixed.inset-0.z-50.bg-black\/95 .text-white,
+.theme-light [class*="bg-black/95"] h3,
+.theme-light [class*="bg-black/95"] .text-white {
+  color: #ffffff !important;
+}
+.theme-light .fixed.inset-0.bg-black\/95 .text-slate-400,
+.theme-light .fixed.inset-0.z-50.bg-black\/95 .text-slate-400,
+.theme-light .fixed.inset-0.bg-black\/95 .text-slate-300,
+.theme-light .fixed.inset-0.z-50.bg-black\/95 .text-slate-300,
+.theme-light .fixed.inset-0.bg-black\/95 .text-slate-200,
+.theme-light .fixed.inset-0.z-50.bg-black\/95 .text-slate-200,
+.theme-light [class*="bg-black/95"] .text-slate-400,
+.theme-light [class*="bg-black/95"] .text-slate-300,
+.theme-light [class*="bg-black/95"] .text-slate-200 {
+  color: #e2e8f0 !important;
+}
+.theme-light .fixed.inset-0.bg-black\/95 button,
+.theme-light .fixed.inset-0.z-50.bg-black\/95 button,
+.theme-light [class*="bg-black/95"] button {
+  color: #ffffff !important;
+}
+.theme-light .fixed.inset-0.bg-black\/95 a,
+.theme-light .fixed.inset-0.z-50.bg-black\/95 a,
+.theme-light [class*="bg-black/95"] a {
+  color: #ffffff !important;
+}
+
+/* History Showcase ("Tādi bijām" & "Tādi esam") Light Theme Polish */
+.theme-light .history-photo-card {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.04) !important;
+}
+
+.theme-light .history-photo-frame {
+  background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+.theme-light .history-photo-frame img {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Hero Text Container: Fully transparent background so the background photo is 100% visible */
+.hero-text-card {
+  background: transparent !important;
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.hero-text-card h1 {
+  color: #ffffff !important;
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.95),
+    0 4px 16px rgba(0, 0, 0, 0.9),
+    0 8px 32px rgba(0, 0, 0, 0.85) !important;
+}
+
+.hero-text-card p,
+.hero-text-card p strong,
+.hero-text-card p .text-white,
+.hero-text-card p span {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  text-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.95),
+    0 3px 12px rgba(0, 0, 0, 0.9) !important;
+}
+
+@media (max-width: 640px) {
+  .hero-text-card {
+    padding: 0 !important;
+    background: transparent !important;
+    background-color: transparent !important;
+  }
+}
+
+/* Hero Section in Light Theme: Background photo 100% visible, transparent text background */
+.theme-light #sakums {
+  background-color: #f8fafc;
+}
+.theme-light #sakums .hero-dark-overlay,
+.theme-light #sakums .hero-left-overlay {
+  display: none !important;
+}
+.theme-light #sakums .hero-light-overlay {
+  display: block !important;
+  z-index: 10 !important;
+  background: linear-gradient(to top, rgba(248, 250, 252, 0.75) 0%, rgba(248, 250, 252, 0.1) 25%, transparent 100%) !important;
+}
+.theme-light #sakums .hero-text-card {
+  background: transparent !important;
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+.theme-light #sakums .hero-text-card h1 {
+  color: #ffffff !important;
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.95),
+    0 4px 16px rgba(0, 0, 0, 0.9),
+    0 8px 32px rgba(0, 0, 0, 0.85) !important;
+}
+.theme-light #sakums .hero-text-card p,
+.theme-light #sakums .hero-text-card p strong,
+.theme-light #sakums .hero-text-card p .text-white,
+.theme-light #sakums .hero-text-card p span {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  text-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.95),
+    0 3px 12px rgba(0, 0, 0, 0.9) !important;
+}
+.theme-light #sakums .hero-text-card .bg-\[\#070D18\]\/85 {
+  background-color: rgba(7, 13, 24, 0.85) !important;
+  border-color: rgba(16, 185, 129, 0.4) !important;
+  color: #34d399 !important;
+}
+.theme-light #sakums .hero-text-card .bg-slate-900\/80 {
+  background-color: rgba(15, 23, 42, 0.85) !important;
+  border-color: rgba(51, 65, 85, 0.7) !important;
+}
+.theme-light #sakums .hero-text-card .bg-slate-900\/80 .text-white {
+  color: #ffffff !important;
+}
+.theme-light #sakums .hero-text-card .bg-slate-900\/80 .text-slate-300 {
+  color: #cbd5e1 !important;
+}
+.theme-light #sakums .hero-text-card a.bg-slate-900\/90 {
+  background-color: rgba(15, 23, 42, 0.9) !important;
+  color: #ffffff !important;
+  border-color: rgba(71, 85, 105, 0.8) !important;
+}
+.theme-light #sakums .hero-text-card a.bg-slate-900\/90:hover {
+  background-color: rgba(30, 41, 59, 0.95) !important;
+  border-color: #10b981 !important;
+}
+.theme-light #sakums .hero-text-card button.bg-\[\#070D18\]\/70 {
+  background-color: rgba(7, 13, 24, 0.75) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  color: #e2e8f0 !important;
+}
+.theme-light #sakums .hero-text-card button.bg-\[\#070D18\]\/70:hover {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Results Table Header & Rows in Light Mode */
+.theme-light thead,
+.theme-light thead.bg-slate-900\/90,
+.theme-light thead.bg-slate-900\/80 {
+  background-color: #f1f5f9 !important;
+  border-bottom: 2px solid #cbd5e1 !important;
+}
+.theme-light thead th {
+  color: #334155 !important;
+  font-weight: 700 !important;
+}
+
+.theme-light tbody.bg-\[\#131D31\] {
+  background-color: #ffffff !important;
+}
+.theme-light tr.hover\:bg-slate-800\/40:hover {
+  background-color: #f8fafc !important;
+}
+
+/* High-contrast Accent Badges, Pills & Chips in Light Mode */
+.theme-light .text-pink-200,
+.theme-light .text-pink-300,
+.theme-light .text-pink-300\/70 {
+  color: #be185d !important; /* Accessible deep rose */
+}
+.theme-light .text-pink-400,
+.theme-light .text-pink-400\/80 {
+  color: #9d174d !important;
+}
+.theme-light .bg-pink-950\/40,
+.theme-light .bg-pink-950\/30 {
+  background-color: #fdf2f8 !important;
+  border-color: #fbcfe8 !important;
+  color: #be185d !important;
+}
+.theme-light .bg-pink-500\/10,
+.theme-light .bg-pink-500\/20 {
+  background-color: #fce7f3 !important;
+  border-color: #f472b6 !important;
+}
+
+.theme-light .text-blue-300 {
+  color: #1d4ed8 !important; /* Accessible royal blue */
+}
+.theme-light .text-blue-400 {
+  color: #1e40af !important;
+}
+.theme-light .bg-blue-500\/10,
+.theme-light .bg-blue-500\/15,
+.theme-light .bg-blue-500\/20 {
+  background-color: #eff6ff !important;
+  border-color: #bfdbfe !important;
+}
+
+.theme-light .text-amber-300 {
+  color: #b45309 !important; /* High contrast amber/gold for 1st place */
+}
+.theme-light .bg-amber-500\/10 {
+  background-color: #fef3c7 !important;
+  border-color: #fde68a !important;
+}
+
+.theme-light .text-rose-400 {
+  color: #be123c !important;
+}
+.theme-light .bg-rose-500\/15 {
+  background-color: #ffe4e6 !important;
+  border-color: #fecdd3 !important;
+}
+
+.theme-light .text-purple-400 {
+  color: #7e22ce !important;
+}
+.theme-light .bg-purple-500\/15 {
+  background-color: #f3e8ff !important;
+  border-color: #e9d5ff !important;
+}
+
+/* Callout actions with bg-white/10 */
+.theme-light .bg-white\/10 {
+  background-color: #0f172a !important;
+  border-color: #0f172a !important;
+  color: #ffffff !important;
+}
+.theme-light .bg-white\/10:hover {
+  background-color: #b88225 !important;
+  border-color: #b88225 !important;
+  color: #ffffff !important;
+}
+
+/* Gold Accents - deep antique gold for contrast against light surfaces */
+.theme-light .text-brand-gold {
+  color: #b88225 !important;
+}
+
+.theme-light .hover\:text-brand-gold:hover {
+  color: #92400e !important;
+}
+
+/* Buttons keeping dark text for gold contrast */
+.theme-light .bg-brand-gold,
+.theme-light .bg-brand-goldLight {
+  background-color: #e5a93c !important;
+  color: #070D18 !important;
+}
+
+.theme-light .text-brand-dark {
+  color: #070D18 !important;
+}
+
+/* Inputs, Textareas, and Dropdown selects */
+.theme-light input,
+.theme-light select,
+.theme-light textarea {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+.theme-light input::placeholder,
+.theme-light textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* Navbar in light mode */
+.theme-light nav {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-bottom-color: #e2e8f0 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+.theme-light nav a {
+  color: #334155;
+}
+
+.theme-light nav a:hover {
+  color: #b88225;
+}
+
+/* Quick Filter Badges in light mode */
+.theme-light .bg-slate-900\/60 {
+  background-color: #f1f5f9 !important;
+}
+
+/* Overlays & Gradients */
+.theme-light .bg-gradient-to-t.from-\[\#131D31\] {
+  --tw-gradient-from: #ffffff var(--tw-gradient-from-position) !important;
+  --tw-gradient-via: rgb(255 255 255 / 0.1) var(--tw-gradient-via-position) !important;
+  --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to) !important;
+}
+
+.theme-light .bg-gradient-to-t.from-\[\#070D18\]\/90 {
+  --tw-gradient-from: rgb(248 250 252 / 0.9) var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: rgb(248 250 252 / 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+
+/* Custom scrollbar (dark default) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #070D18;
+}
+::-webkit-scrollbar-thumb {
+  background: #24324D;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E5A93C;
+}
+
+/* Light theme scrollbar */
+.theme-light ::-webkit-scrollbar,
+.theme-light ::-webkit-scrollbar-track {
+  background: #e2e8f0;
+}
+.theme-light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+.theme-light ::-webkit-scrollbar-thumb:hover {
+  background: #b88225;
+}
+
+/* Glassmorphism effects */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(229, 169, 60, 0.15);
+}
+
+.theme-light .glass-panel {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(229, 169, 60, 0.35);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+.glass-card {
+  background: rgba(19, 29, 49, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.theme-light .glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.glass-card:hover {
+  border-color: rgba(229, 169, 60, 0.4);
+}
+
+/* Gold Gradient text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #FDE68A 0%, #E5A93C 50%, #B88225 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.theme-light .text-gold-gradient {
+  background: linear-gradient(135deg, #d97706 0%, #b88225 50%, #78350f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Smooth glow */
+.gold-glow {
+  box-shadow: 0 0 25px rgba(229, 169, 60, 0.25);
+}

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="lv" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💃</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SDK Zīle | Sporta Deju Klubs Mālpilī un Siguldā</title>
+    <meta name="description" content="Sporta deju klubs Zīle – nodarbības bērniem, jauniešiem un pieaugušajiem Mālpilī un Siguldā kopš 1995. gada. Standartdejas, Latīņamerikas dejas, kāzu dejas un sacensības." />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      (function() {
+        try {
+          var stored = localStorage.getItem('sdk_zile_theme');
+          var isDark = true;
+          if (stored) {
+            var clean = stored.replace(/^"|"$/g, '').trim();
+            if (clean === 'light') isDark = false;
+            else if (clean === 'dark') isDark = true;
+            else isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          } else {
+            isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          }
+          var root = document.documentElement;
+          if (isDark) {
+            root.classList.add('theme-dark', 'dark');
+            root.classList.remove('theme-light', 'light');
+            root.style.colorScheme = 'dark';
+          } else {
+            root.classList.add('theme-light', 'light');
+            root.classList.remove('theme-dark', 'dark');
+            root.style.colorScheme = 'light';
+          }
+        } catch (e) {}
+      })();
+    </script>
+    @viteReactRefresh
+    @vite(['resources/css/app.css', 'resources/js/main.jsx'])
+  </head>
+  <body class="antialiased selection:bg-brand-gold selection:text-brand-dark min-h-screen">
+    <div id="root"></div>
+  </body>
+</html>

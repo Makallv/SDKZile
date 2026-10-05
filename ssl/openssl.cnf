@@ -1,0 +1,23 @@
+[req]
+distinguished_name = req_distinguished_name
+x509_extensions = v3_req
+prompt = no
+
+[req_distinguished_name]
+CN = localhost
+O = SDK Zile
+C = LV
+
+[v3_req]
+keyUsage = critical, digitalSignature, keyEncipherment
+extendedKeyUsage = serverAuth
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = localhost
+DNS.2 = *.localhost
+DNS.3 = sdkzile.local
+DNS.4 = sdkzile.test
+IP.1 = 127.0.0.1
+IP.2 = 10.90.0.50
+IP.3 = 0.0.0.0
