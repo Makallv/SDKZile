@@ -50,8 +50,8 @@ export default function Navbar({ onOpenAdmin, onOpenCompetitions, currentView, s
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#070D18]/90 backdrop-blur-md border-b border-brand-border/60 py-3 shadow-2xl'
-          : 'bg-gradient-to-b from-[#070D18]/90 via-[#070D18]/40 to-transparent py-5'
+          ? 'bg-[#070D18]/95 backdrop-blur-md border-b border-brand-border/60 py-2 sm:py-2.5 shadow-2xl'
+          : 'bg-gradient-to-b from-[#070D18]/95 via-[#070D18]/60 to-transparent py-3 sm:py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -67,11 +67,11 @@ export default function Navbar({ onOpenAdmin, onOpenCompetitions, currentView, s
             }}
             className="flex items-center gap-3 group"
           >
-            <div className="w-11 h-11 rounded-xl bg-white/5 border border-brand-gold/40 p-1 flex items-center justify-center shadow-lg shadow-brand-gold/20 group-hover:scale-105 transition-transform duration-300">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-[68px] md:h-[68px] rounded-2xl bg-white/5 border border-brand-gold/40 p-1.5 flex items-center justify-center shadow-xl shadow-brand-gold/20 group-hover:scale-105 transition-transform duration-300 shrink-0">
               <img
                 src="/images/logo/logo-zile.png"
                 alt="SDK Zīle Logo"
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain filter drop-shadow"
               />
             </div>
             <div className="flex flex-col">

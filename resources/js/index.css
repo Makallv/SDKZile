@@ -260,6 +260,12 @@ html.theme-light,
 .theme-light #sakums .hero-left-overlay {
   display: none !important;
 }
+.theme-light #sakums .hero-bg-base {
+  background-color: #f8fafc !important;
+}
+.theme-light #sakums .hero-left-vignette {
+  background: linear-gradient(to right, rgba(248, 250, 252, 0.95) 0%, rgba(248, 250, 252, 0.9) 25%, transparent 60%) !important;
+}
 .theme-light #sakums .hero-light-overlay {
   display: block !important;
   z-index: 10 !important;

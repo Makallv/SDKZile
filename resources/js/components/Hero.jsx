@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Trophy, Heart, Users, MapPin, Sparkles, Award, ChevronLeft, ChevronRight, Camera } from 'lucide-react';
+import { ArrowRight, Trophy, Heart, Users, MapPin, Sparkles, Award, ChevronLeft, ChevronRight } from 'lucide-react';
 
 // 5 authentic rotating photos: Marks & Evelina, Kristers & Amanda, Iveta Zile, and Championship
 const DIENAS_FOTO_SLIDES = [
@@ -55,189 +55,200 @@ export default function Hero({ onOpenCompetitions }) {
   return (
     <section 
       id="sakums" 
-      className="relative min-h-[92vh] flex items-center justify-center pt-24 pb-16 overflow-hidden"
+      className="relative min-h-[94vh] flex flex-col justify-between pt-24 pb-8 overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Background Pictures Carousel from sdk-zile.lv */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        {DIENAS_FOTO_SLIDES.map((slide, index) => {
-          const isActive = index === currentSlide;
-          return (
-            <div
-              key={slide.url}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
-              }`}
-            >
-              <picture>
-                <source srcSet={slide.webpUrl} type="image/webp" />
-                <img
-                  src={slide.url}
-                  alt={slide.title}
-                  loading={index === 0 ? "eager" : "lazy"}
-                  fetchPriority={index === 0 ? "high" : "auto"}
-                  decoding="async"
-                  className={`w-full h-full object-cover transition-transform duration-700 ease-out ${slide.position || 'object-center'}`}
-                />
-              </picture>
-            </div>
-          );
-        })}
+      {/* Background Pictures Carousel: Dedicated right-hand section on desktop so the left stack never covers anyone */}
+      <div className="hero-bg-base absolute inset-0 z-0 overflow-hidden bg-[#070D18]">
+        
+        {/* Pictures Container: Shifted decisively to the right 75% on desktop */}
+        <div className="absolute inset-0 lg:left-[24%] lg:w-[76%] xl:left-[28%] xl:w-[72%] 2xl:left-[32%] 2xl:w-[68%]">
+          {DIENAS_FOTO_SLIDES.map((slide, index) => {
+            const isActive = index === currentSlide;
+            return (
+              <div
+                key={slide.url}
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                  isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
+                }`}
+              >
+                <picture className="w-full h-full block">
+                  <source srcSet={slide.webpUrl} type="image/webp" />
+                  <img
+                    src={slide.url}
+                    alt={slide.title}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    fetchPriority={index === 0 ? "high" : "auto"}
+                    decoding="async"
+                    className={`w-full h-full object-cover transition-transform duration-700 ease-out ${slide.position || 'object-center'}`}
+                  />
+                </picture>
+              </div>
+            );
+          })}
+        </div>
 
-        {/* Soft, balanced bottom/top transition: preserves 100% full-width photo visibility while keeping text crisp */}
-        <div className="hero-dark-overlay absolute inset-0 z-20 pointer-events-none bg-gradient-to-t from-[#070D18] via-transparent via-25% to-black/30" />
-        <div className="hero-light-overlay absolute inset-0 z-20 pointer-events-none hidden" />
+        {/* Soft edge gradient on left to seamlessly blend into the dark text backdrop */}
+        <div className="hero-left-vignette absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-[#070D18] via-[#070D18] via-[22%] lg:via-[27%] xl:via-[31%] to-transparent hidden lg:block" />
+
+        {/* Bottom vignette: keeps the bottom stats area clear and readable while transitioning into next section */}
+        <div className="hero-dark-overlay absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-[#070D18] via-transparent via-25% to-black/35" />
+        <div className="hero-light-overlay absolute inset-0 z-10 pointer-events-none hidden" />
       </div>
 
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
-        <div className="max-w-3xl hero-text-card">
+      {/* TOP & MIDDLE: Compact welcoming text strictly on the left, keeping all photo subjects 100% uncovered */}
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-8 flex-1 flex items-center">
+        <div className="w-full max-w-md lg:max-w-[420px] xl:max-w-[450px] text-center sm:text-left hero-text-card">
           
           {/* Badge in club logo electric green */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#070D18]/85 backdrop-blur-md border border-[#00FF00]/40 text-[#00FF00] text-xs font-bold uppercase tracking-widest mb-6 shadow-xl shadow-black/40">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#070D18]/85 backdrop-blur-md border border-[#00FF00]/40 text-[#00FF00] text-xs font-bold uppercase tracking-widest mb-4 shadow-xl shadow-black/40">
             <Sparkles className="w-3.5 h-3.5 text-[#00FF00]" />
-            <span>Sporta Deju Klubs ar tradīcijām kopš 1995. gada</span>
+            <span>Sporta Deju Klubs kopš 1995. gada</span>
           </div>
 
-          {/* Main Title / Tagline in SDK Zīle club logo electric green */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-sans font-black tracking-tight text-white leading-[1.08] mb-6 drop-shadow-[0_4px_18px_rgba(0,0,0,0.95)]">
+          {/* Main Title / Tagline in SDK Zīle electric green */}
+          <h1 className="text-3xl sm:text-4xl lg:text-[44px] xl:text-5xl font-sans font-black tracking-tight text-white leading-[1.08] mb-4 drop-shadow-[0_4px_18px_rgba(0,0,0,0.95)]">
             DEJA IR KUSTĪBA, <br />
             <span className="text-[#00FF00] text-zile-green">
               KUSTĪBA IR PATI DZĪVE
             </span>
           </h1>
 
-          {/* Subheading with high readability */}
-          <p className="text-base sm:text-lg lg:text-xl text-slate-100 font-medium leading-relaxed mb-8 max-w-2xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)]">
+          {/* Welcoming Subheading in Italics */}
+          <p 
+            className="text-sm sm:text-base text-slate-100 italic font-medium leading-relaxed mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] max-w-md"
+            style={{ fontStyle: 'italic' }}
+          >
             Laipni lūgti sporta deju klubā <strong className="text-white !text-white font-bold underline decoration-[#00FF00]/80 underline-offset-4">“Zīle”</strong>! Aicinām bērnus, 
             jauniešus un pieaugušos apgūt sporta deju soli Mālpilī un Siguldā — no pirmajiem soļiem 
             līdz augstākās klases čempionātu godalgām.
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center gap-4 mb-12">
+          {/* Compact CTA Buttons: stacked cleanly within 360px so they never stretch into the image */}
+          <div className="flex flex-col gap-3 max-w-[360px] mx-auto sm:mx-0 w-full">
             <a
               href="#kontakti"
-              className="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-sm uppercase tracking-wider text-brand-dark bg-gradient-to-r from-amber-400 via-brand-gold to-amber-500 shadow-2xl shadow-brand-gold/30 hover:brightness-110 active:scale-95 transition-all text-center flex items-center justify-center gap-2 group ring-2 ring-brand-gold/50"
+              className="w-full px-6 py-3.5 rounded-xl font-bold text-sm uppercase tracking-wider text-brand-dark bg-gradient-to-r from-amber-400 via-brand-gold to-amber-500 shadow-xl shadow-brand-gold/30 hover:brightness-110 active:scale-95 transition-all text-center flex items-center justify-center gap-2 group ring-2 ring-brand-gold/50"
             >
               <span>Pieteikties Nodarbībām</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
 
-            <a
-              href="#kazu-dejas"
-              className="w-full sm:w-auto px-7 py-4 rounded-xl font-bold text-sm tracking-wider text-white bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md border border-slate-600/80 hover:border-brand-gold/60 shadow-xl shadow-black/40 transition-all text-center flex items-center justify-center gap-2"
-            >
-              <Heart className="w-4 h-4 text-pink-400" />
-              <span>Kāzu Deju Apmācība</span>
-            </a>
+            <div className="flex flex-col sm:flex-row gap-2.5 w-full">
+              <a
+                href="#kazu-dejas"
+                className="flex-1 px-4 py-3 rounded-xl font-bold text-xs tracking-wider text-white bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md border border-slate-600/80 hover:border-brand-gold/60 shadow-xl shadow-black/40 transition-all text-center flex items-center justify-center gap-1.5"
+              >
+                <Heart className="w-3.5 h-3.5 text-pink-400 shrink-0" />
+                <span>Kāzu Dejas</span>
+              </a>
 
-            <button
-              onClick={onOpenCompetitions}
-              className="w-full sm:w-auto px-6 py-4 rounded-xl font-semibold text-sm text-slate-200 hover:text-brand-gold transition-colors flex items-center justify-center gap-2 bg-[#070D18]/70 hover:bg-white/10 backdrop-blur-md border border-white/15 shadow-lg"
-            >
-              <Trophy className="w-4 h-4 text-brand-gold" />
-              <span>Sacensību Rezultāti</span>
-            </button>
-          </div>
-
-          {/* Highlights / Stats strip with individual glass cards for superior legibility */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-4 border-t border-slate-700/60">
-            <div className="flex items-center gap-3 p-3 rounded-xl bg-slate-900/80 backdrop-blur-md border border-slate-700/60 shadow-lg">
-              <div className="p-2 rounded-lg bg-amber-500/15 border border-amber-500/30 text-brand-gold shrink-0">
-                <Trophy className="w-4 h-4" />
-              </div>
-              <div className="text-left">
-                <div className="text-lg sm:text-xl font-extrabold text-white">30+</div>
-                <div className="text-xs text-slate-300 font-medium">Gadi Deju Zālē</div>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3 p-3 rounded-xl bg-slate-900/80 backdrop-blur-md border border-slate-700/60 shadow-lg">
-              <div className="p-2 rounded-lg bg-blue-500/15 border border-blue-500/30 text-blue-400 shrink-0">
-                <MapPin className="w-4 h-4" />
-              </div>
-              <div className="text-left">
-                <div className="text-lg sm:text-xl font-extrabold text-white">2 Bāzes</div>
-                <div className="text-xs text-slate-300 font-medium">Mālpils & Sigulda</div>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3 p-3 rounded-xl bg-slate-900/80 backdrop-blur-md border border-slate-700/60 shadow-lg">
-              <div className="p-2 rounded-lg bg-pink-500/15 border border-pink-500/30 text-pink-400 shrink-0">
-                <Users className="w-4 h-4" />
-              </div>
-              <div className="text-left">
-                <div className="text-lg sm:text-xl font-extrabold text-white">No 4 g.v.</div>
-                <div className="text-xs text-slate-300 font-medium">Līdz A klasei</div>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3 p-3 rounded-xl bg-slate-900/80 backdrop-blur-md border border-slate-700/60 shadow-lg">
-              <div className="p-2 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 shrink-0">
-                <Award className="w-4 h-4" />
-              </div>
-              <div className="text-left">
-                <div className="text-lg sm:text-xl font-extrabold text-white">LSDF</div>
-                <div className="text-xs text-slate-300 font-medium">Sertificēti Treneri</div>
-              </div>
+              <button
+                onClick={onOpenCompetitions}
+                className="flex-1 px-4 py-3 rounded-xl font-semibold text-xs text-slate-200 hover:text-brand-gold transition-colors flex items-center justify-center gap-1.5 bg-[#070D18]/80 hover:bg-white/10 backdrop-blur-md border border-white/15 shadow-lg cursor-pointer"
+              >
+                <Trophy className="w-3.5 h-3.5 text-brand-gold shrink-0" />
+                <span>Rezultāti</span>
+              </button>
             </div>
           </div>
 
         </div>
       </div>
 
-      {/* Subtle Carousel Controls & Photo Indicators */}
-      <div className="absolute bottom-6 right-6 z-30 hidden sm:flex items-center gap-3 bg-black/75 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 shadow-2xl text-xs">
-        {/* Photo indicator badge */}
-        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-brand-gold/15 border border-brand-gold/30 text-brand-gold text-[11px] font-semibold">
-          <Camera className="w-3 h-3 text-brand-gold" />
-          <span>Kluba fotogalerija</span>
-        </div>
-
-        <div className="h-4 w-px bg-white/20" />
-
-        {/* Current slide label */}
-        <span className="text-[11px] text-slate-200 font-medium max-w-[260px] truncate hidden md:inline-block">
-          {DIENAS_FOTO_SLIDES[currentSlide]?.title}
-        </span>
-
-        {/* Prev / Dots / Next */}
-        <div className="flex items-center gap-1.5">
-          <button
-            onClick={() => setCurrentSlide((prev) => (prev - 1 + DIENAS_FOTO_SLIDES.length) % DIENAS_FOTO_SLIDES.length)}
-            className="p-1 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
-            title="Iepriekšējais foto"
-            aria-label="Iepriekšējais foto"
-          >
-            <ChevronLeft className="w-3.5 h-3.5" />
-          </button>
-          
-          <div className="flex items-center gap-1.5 px-1">
-            {DIENAS_FOTO_SLIDES.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setCurrentSlide(idx)}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  idx === currentSlide
-                    ? 'w-5 bg-brand-gold shadow-sm'
-                    : 'w-1.5 bg-white/40 hover:bg-white/70'
-                }`}
-                title={`Pārslēgt uz attēlu ${idx + 1}`}
-                aria-label={`Pārslēgt uz attēlu ${idx + 1}`}
-              />
-            ))}
+      {/* BOTTOM SECTION: Highlights / Stats Strip spanning the bottom as it was */}
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+        
+        {/* Subtle photo info & controls right above the stats strip */}
+        <div className="flex items-center justify-between mb-3 text-xs">
+          <div className="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/10 text-slate-200 shadow-lg">
+            <span className="w-2 h-2 rounded-full bg-brand-gold animate-pulse" />
+            <span className="font-semibold text-white">{DIENAS_FOTO_SLIDES[currentSlide]?.title}</span>
+            <span className="text-slate-400 text-[11px] hidden md:inline">• {DIENAS_FOTO_SLIDES[currentSlide]?.subtitle}</span>
           </div>
 
-          <button
-            onClick={() => setCurrentSlide((prev) => (prev + 1) % DIENAS_FOTO_SLIDES.length)}
-            className="p-1 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
-            title="Nākamais foto"
-            aria-label="Nākamais foto"
-          >
-            <ChevronRight className="w-3.5 h-3.5" />
-          </button>
+          {/* Photo carousel pagination controls */}
+          <div className="inline-flex items-center gap-2 ml-auto bg-black/70 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10 shadow-lg">
+            <button
+              onClick={() => setCurrentSlide((prev) => (prev - 1 + DIENAS_FOTO_SLIDES.length) % DIENAS_FOTO_SLIDES.length)}
+              className="p-1 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+              title="Iepriekšējais foto"
+              aria-label="Iepriekšējais foto"
+            >
+              <ChevronLeft className="w-3.5 h-3.5" />
+            </button>
+            
+            <div className="flex items-center gap-1.5 px-1">
+              {DIENAS_FOTO_SLIDES.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentSlide(idx)}
+                  className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                    idx === currentSlide
+                      ? 'w-4 bg-brand-gold'
+                      : 'w-1.5 bg-white/40 hover:bg-white/70'
+                  }`}
+                  title={`Foto ${idx + 1}`}
+                  aria-label={`Foto ${idx + 1}`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={() => setCurrentSlide((prev) => (prev + 1) % DIENAS_FOTO_SLIDES.length)}
+              className="p-1 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+              title="Nākamais foto"
+              aria-label="Nākamais foto"
+            >
+              <ChevronRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
         </div>
+
+        {/* 4 Stats Cards along the bottom as it was */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 border-t border-slate-700/60 pt-3">
+          <div className="flex items-center gap-3 p-3 rounded-xl bg-slate-900/80 backdrop-blur-md border border-slate-700/60 shadow-lg">
+            <div className="p-2 rounded-lg bg-amber-500/15 border border-amber-500/30 text-brand-gold shrink-0">
+              <Trophy className="w-4 h-4" />
+            </div>
+            <div className="text-left">
+              <div className="text-lg sm:text-xl font-extrabold text-white">30+</div>
+              <div className="text-xs text-slate-300 font-medium">Gadi Deju Zālē</div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3 p-3 rounded-xl bg-slate-900/80 backdrop-blur-md border border-slate-700/60 shadow-lg">
+            <div className="p-2 rounded-lg bg-blue-500/15 border border-blue-500/30 text-blue-400 shrink-0">
+              <MapPin className="w-4 h-4" />
+            </div>
+            <div className="text-left">
+              <div className="text-lg sm:text-xl font-extrabold text-white">2 Bāzes</div>
+              <div className="text-xs text-slate-300 font-medium">Mālpils & Sigulda</div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3 p-3 rounded-xl bg-slate-900/80 backdrop-blur-md border border-slate-700/60 shadow-lg">
+            <div className="p-2 rounded-lg bg-pink-500/15 border border-pink-500/30 text-pink-400 shrink-0">
+              <Users className="w-4 h-4" />
+            </div>
+            <div className="text-left">
+              <div className="text-lg sm:text-xl font-extrabold text-white">No 4 g.v.</div>
+              <div className="text-xs text-slate-300 font-medium">Līdz A klasei</div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3 p-3 rounded-xl bg-slate-900/80 backdrop-blur-md border border-slate-700/60 shadow-lg">
+            <div className="p-2 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 shrink-0">
+              <Award className="w-4 h-4" />
+            </div>
+            <div className="text-left">
+              <div className="text-lg sm:text-xl font-extrabold text-white">LSDF</div>
+              <div className="text-xs text-slate-300 font-medium">Sertificēti Treneri</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   );
