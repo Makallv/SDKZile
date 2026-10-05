@@ -254,25 +254,22 @@ html.theme-light,
 
 /* Hero Section: Seamless perimeter blending, fog-free crystal-clear center */
 .hero-photos-container {
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 98%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 98%, transparent 100%);
+  /* Clean native rasterization with zero off-screen buffer downsampling */
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
 }
 
-/* Hero Images: High-Definition Ultra-Sharp Rendering */
+/* Hero Images: High-Fidelity Sharp Rendering with Zero Pixelation */
 .hero-photos-container img,
 .hero-sharp-img {
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  filter: contrast(1.08) brightness(1.02) saturate(1.06);
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+  image-rendering: auto !important;
+  filter: none !important;
 }
 
 .theme-light .hero-photos-container img,
 .theme-light .hero-sharp-img {
-  filter: contrast(1.10) brightness(1.04) saturate(1.08) !important;
+  image-rendering: auto !important;
+  filter: none !important;
 }
 
 .hero-bg-base {
@@ -342,10 +339,14 @@ html.theme-light,
   background: linear-gradient(
     to right,
     #f8fafc 0%,
-    #f8fafc 18%,
-    rgba(248, 250, 252, 0.8) 25%,
-    rgba(248, 250, 252, 0.3) 32%,
-    transparent 40%
+    #f8fafc 26%,
+    rgba(248, 250, 252, 0.98) 30%,
+    rgba(248, 250, 252, 0.88) 36%,
+    rgba(248, 250, 252, 0.68) 42%,
+    rgba(248, 250, 252, 0.42) 48%,
+    rgba(248, 250, 252, 0.18) 54%,
+    rgba(248, 250, 252, 0.05) 58%,
+    transparent 62%
   ) !important;
 }
 @media (max-width: 1023px) {

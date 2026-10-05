@@ -81,7 +81,7 @@ export default function Hero({ onOpenCompetitions }) {
                     loading={index === 0 ? "eager" : "lazy"}
                     fetchPriority={index === 0 ? "high" : "auto"}
                     decoding="async"
-                    className={`w-full h-full object-cover transition-transform duration-700 ease-out hero-sharp-img ${slide.position || 'object-center'}`}
+                    className={`w-full h-full object-cover hero-sharp-img ${slide.position || 'object-center'}`}
                   />
                 </picture>
               </div>
