@@ -21,16 +21,27 @@ class NetworkVite extends BaseVite
             return null;
         }
 
-        // If using Herd Valet (.test) or hotFile already points to the site domain, preserve it
-        if (str_contains($url, '.test')) {
+        try {
+            $request = request();
+            $requestHost = $request->getHost();
+            $port = (int) $request->getPort();
+            $scheme = $request->getScheme();
+
+            // When accessed through the unified proxy (HTTPS 8443 or HTTP 8080)
+            if ($port === 8443 || $port === 8080) {
+                return "{$scheme}://{$requestHost}:{$port}";
+            }
+
+            // When accessed directly through Laravel (port 8000), point to Vite dev port 5173
+            if ($port === 8000) {
+                return "http://{$requestHost}:5173";
+            }
+
+            // Fallback for custom reverse proxies or other ports
+            $portSuffix = ($port && ! in_array($port, [80, 443])) ? ":{$port}" : '';
+            return "{$scheme}://{$requestHost}{$portSuffix}";
+        } catch (\Throwable) {
             return $url;
         }
-
-        // For LAN or local network access, dynamically use the request host with the Vite dev port
-        $requestHost = request()->getHost();
-        $parsed = parse_url($url);
-        $scheme = $parsed['scheme'] ?? 'http';
-        $port = isset($parsed['port']) ? ':'.$parsed['port'] : ':5173';
-        return "{$scheme}://{$requestHost}{$port}";
     }
 }

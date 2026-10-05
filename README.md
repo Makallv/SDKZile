@@ -190,10 +190,12 @@ npm run dev
 ```
 
 Piekļuves adreses:
-* **Drošā vietne (HTTPS):** [https://localhost:8443/](https://localhost:8443/)
+* **Vienotais izstrādes starpniekserveris (lokāli & lokālajā tīklā):**
+  * **HTTP:** [http://localhost:8080/](http://localhost:8080/) vai `http://<JŪSU-IP>:8080/`
+  * **HTTPS:** [https://localhost:8443/](https://localhost:8443/) vai `https://<JŪSU-IP>:8443/`
 * **Vite tiešais serveris:** [http://localhost:5173/](http://localhost:5173/)
 * **Laravel tiešais serveris:** [http://localhost:8000/](http://localhost:8000/)
-* **API pārbaude (Health check):** [https://localhost:8443/api/health](https://localhost:8443/api/health)
+* **API pārbaude (Health check):** [http://localhost:8080/api/health](http://localhost:8080/api/health) vai [https://localhost:8443/api/health](https://localhost:8443/api/health)
 
 ---
 
@@ -201,11 +203,11 @@ Piekļuves adreses:
 
 | Komanda | Apraksts |
 | :--- | :--- |
-| `npm run dev` | Vienlaicīgi palaiž Laravel (`:8000`), Vite (`:5173`) un HTTPS Proxy (`:8443`) |
-| `npm run dev:http` | Palaiž Laravel un Vite bez HTTPS starpniekservera |
+| `npm run dev` | Vienlaicīgi palaiž Laravel (`:8000`), Vite (`:5173`) un vienoto HTTP/HTTPS starpniekserveri (`:8080` & `:8443`) |
+| `npm run dev:http` | Palaiž Laravel un Vite bez starpniekservera |
 | `npm run client` | Palaiž tikai Vite izstrādes serveri |
 | `npm run serve` | Palaiž tikai Laravel iebūvēto serveri (`php artisan serve`) |
-| `npm run proxy` | Palaiž tikai HTTPS starpniekserveri (`ssl-proxy.js`) |
+| `npm run proxy` | Palaiž tikai vienoto HTTP/HTTPS starpniekserveri (`ssl-proxy.js`) |
 | `npm run build` | Izveido optimizētu produkcijas būvējumu |
 | `npm run migrate` | Izpilda datubāzes migrācijas |
 | `npm run seed` | Aizpilda sacensību un foto datus datubāzē |
